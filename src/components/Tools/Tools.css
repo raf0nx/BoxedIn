@@ -1,0 +1,23 @@
+.tools {
+  height: 100%;
+  width: 480px;
+  background-color: #444444;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.tools__content {
+  padding: 1rem;
+}
+
+.tools__action {
+  margin: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .tools {
+    background-color: #e0e0e0;
+  }
+}
