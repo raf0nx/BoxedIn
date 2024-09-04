@@ -1,10 +1,22 @@
 import { Box, Edges } from '@react-three/drei'
 
-export function Cargo() {
+import { CARGO_EDGE } from '../../helpers/constants'
+
+interface CargoProps {
+  dimensions: [number, number, number]
+  position: [number, number, number]
+  color: string
+}
+
+export function Cargo({ dimensions, position, color }: CargoProps) {
   return (
-    <Box args={[1, 1, 1]} position={[0, 0.5, 0]}>
-      <meshStandardMaterial color="orange" />
-      <Edges linewidth={2} threshold={1} color={0xffffff} />
+    <Box args={dimensions} position={position}>
+      <meshStandardMaterial color={color} />
+      <Edges
+        linewidth={CARGO_EDGE.width}
+        threshold={CARGO_EDGE.threshold}
+        color={CARGO_EDGE.color}
+      />
     </Box>
   )
 }
