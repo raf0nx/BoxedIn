@@ -9,7 +9,7 @@ import './Canvas.css'
 export function Canvas() {
   return (
     <section className="canvas">
-      <R3Canvas>
+      <R3Canvas camera={{ position: [15, 15, 15] }}>
         <ambientLight intensity={1} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <Base />
