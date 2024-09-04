@@ -1,10 +1,11 @@
 import { Box, Edges } from '@react-three/drei'
 
 import { CARGO_EDGE } from '../../helpers/constants'
+import type { DIMENSIONS_3D } from '../../helpers/types'
 
 interface CargoProps {
-  dimensions: [number, number, number]
-  position: [number, number, number]
+  dimensions: DIMENSIONS_3D
+  position: DIMENSIONS_3D
   color: string
 }
 
