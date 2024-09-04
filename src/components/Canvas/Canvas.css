@@ -1,4 +1,9 @@
 .canvas {
   flex-grow: 1;
   min-width: 0;
+  cursor: grab;
+}
+
+.canvas:active {
+  cursor: grabbing;
 }
