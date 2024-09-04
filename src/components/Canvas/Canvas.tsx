@@ -18,12 +18,16 @@ export function Canvas() {
         </mesh>
         <ambientLight intensity={1} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <mesh position={[0, 0.51, 0]}>
+        <mesh position={[0, 0.5, 0]}>
           <boxGeometry />
           <meshStandardMaterial color={0xffa500} />
           <Edges linewidth={2} threshold={1} color={0xffffff} />
         </mesh>
-        <OrbitControls />
+        <OrbitControls
+          minDistance={10}
+          maxDistance={50}
+          maxPolarAngle={(22 * Math.PI) / 45}
+        />
       </R3Canvas>
     </section>
   )
