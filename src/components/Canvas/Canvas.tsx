@@ -3,6 +3,7 @@ import { OrbitControls } from '@react-three/drei'
 
 import { Base } from '../Base'
 import { Cargo } from '../Cargo'
+import { CargoContainer } from '../CargoContainer'
 import { CAMERA, LIGHT } from '../../helpers/constants'
 
 import './Canvas.css'
@@ -17,7 +18,8 @@ export function Canvas() {
           intensity={LIGHT.intensity}
         />
         <Base />
-        <Cargo dimensions={[1, 1, 1]} position={[0, 0.5, 0]} color="orange" />
+        <CargoContainer />
+        <Cargo dimensions={[1, 1, 1]} position={[0.5, 0.5, 0]} color="orange" />
         <OrbitControls
           minDistance={CAMERA.minDistance}
           maxDistance={CAMERA.maxDistance}
