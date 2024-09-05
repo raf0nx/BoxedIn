@@ -6,7 +6,7 @@ export const CAMERA = {
   minDistance: 10,
   maxDistance: 50,
   minVerticalRotation: DEGREES_88,
-  initialPosition: { position: [15, 15, 15] as DIMENSIONS_3D },
+  initialPosition: { position: [15, 10, 15] as DIMENSIONS_3D },
 } as const
 
 export const LIGHT = {
