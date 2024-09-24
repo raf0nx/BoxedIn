@@ -1,0 +1,1 @@
+export { Cabin } from './Cabin'
