@@ -1,10 +1,24 @@
 import * as THREE from 'three'
 
-export function Trailer() {
+import { TRAILER } from '../../../helpers/constants'
+
+interface TrailerProps {
+  dimensions: {
+    x: number
+    y: number
+    z: number
+  }
+}
+
+export function Trailer({
+  dimensions = { x: 7.2, y: 2.4, z: 2.45 },
+}: TrailerProps) {
+  const { x, y, z } = dimensions
+
   return (
-    <lineSegments position={[3.6, 1.2, 0]}>
-      <edgesGeometry args={[new THREE.BoxGeometry(7.2, 2.4, 2.45)]} />
-      <lineBasicMaterial color={0x808080} />
+    <lineSegments position={TRAILER.position}>
+      <edgesGeometry args={[new THREE.BoxGeometry(x, y, z)]} />
+      <lineBasicMaterial color={TRAILER.edgeColor} />
     </lineSegments>
   )
 }
