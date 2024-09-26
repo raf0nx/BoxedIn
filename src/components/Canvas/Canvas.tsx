@@ -19,7 +19,9 @@ export function Canvas() {
         />
         <Base />
         <CargoContainer />
-        <Cargo dimensions={[1, 1, 1]} position={[0.5, 0.5, 0]} color="orange" />
+        <group position={[0, 0.5, 0]}>
+          <Cargo dimensions={[1, 1, 1]} position={[0, 0, 0]} color="orange" />
+        </group>
         <OrbitControls
           minDistance={CAMERA.minDistance}
           maxDistance={CAMERA.maxDistance}

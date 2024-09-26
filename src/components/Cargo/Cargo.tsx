@@ -3,6 +3,8 @@ import { Box, Edges } from '@react-three/drei'
 import { CARGO_EDGE } from '../../helpers/constants'
 import type { DIMENSIONS_3D } from '../../helpers/types'
 
+import { useAdjustedPosition } from './useAdjustedPosition'
+
 interface CargoProps {
   dimensions: DIMENSIONS_3D
   position: DIMENSIONS_3D
@@ -10,8 +12,10 @@ interface CargoProps {
 }
 
 export function Cargo({ dimensions, position, color }: CargoProps) {
+  const [adjustedPosition, boxRef] = useAdjustedPosition(position)
+
   return (
-    <Box args={dimensions} position={position}>
+    <Box ref={boxRef} args={dimensions} position={adjustedPosition}>
       <meshStandardMaterial color={color} />
       <Edges
         linewidth={CARGO_EDGE.width}
