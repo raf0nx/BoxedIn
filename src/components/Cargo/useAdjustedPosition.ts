@@ -21,13 +21,14 @@ export function useAdjustedPosition(
     boundingBox.getSize(size)
 
     const halfLength = size.x / 2
+    const halfHeight = size.y / 2
     const halfWidth = size.z / 2
     const adjustedZPosition = TRAILER_WIDTH / 2 - halfWidth
 
     setAdjustedPosition(initialPosition => {
       const [x, y, z] = initialPosition
 
-      return [halfLength + x, y, adjustedZPosition - z]
+      return [halfLength + x, halfHeight + y, adjustedZPosition - z]
     })
   }, [])
 
