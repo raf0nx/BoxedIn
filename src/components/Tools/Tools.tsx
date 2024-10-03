@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { getGroqChatCompletion } from '../../helpers/ai-helpers'
+import { getCargoDistribution } from '../../helpers/ai-helpers'
 
 import './Tools.css'
 
@@ -13,8 +13,8 @@ export function Tools() {
   }, [response])
 
   async function sendPrompt() {
-    const chatCompletion = await getGroqChatCompletion()
-    setResponse(chatCompletion.choices[0]?.message?.content || '')
+    const cargoDistribution = await getCargoDistribution()
+    setResponse(cargoDistribution ?? '')
   }
 
   return (
