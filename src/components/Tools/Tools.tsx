@@ -24,14 +24,23 @@ export function Tools() {
     <aside className="tools">
       <div className="tools__content">
         <DimensionsTool title="LOADING SPACE DIMENSIONS">
-          <ToolsInput label="Length" />
-          <ToolsInput label="Height" />
-          <ToolsInput label="Width" />
+          <>
+            <ToolsInput label="Length" />
+            <ToolsInput label="Height" />
+            <ToolsInput label="Width" />
+          </>
         </DimensionsTool>
         <DimensionsTool title="CARGO" isCargo>
-          <ToolsInput label="Length" isCargo />
-          <ToolsInput label="Height" isCargo />
-          <ToolsInput label="Width" isCargo />
+          <>
+            <ToolsInput label="Length" isCargo />
+            <ToolsInput label="Height" isCargo />
+            <ToolsInput label="Width" isCargo />
+          </>
+          <>
+            <ToolsInput label="Length" isCargo />
+            <ToolsInput label="Height" isCargo />
+            <ToolsInput label="Width" isCargo />
+          </>
         </DimensionsTool>
       </div>
       <button className="tools__action" onClick={sendPrompt}>

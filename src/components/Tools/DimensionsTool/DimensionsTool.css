@@ -17,7 +17,7 @@
 
 .dimensions-tool__title {
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
 
@@ -30,6 +30,7 @@
 .dimensions-tool__data--cargo {
   border-top: 1px solid var(--input-border-color);
   padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 @media (prefers-color-scheme: light) {

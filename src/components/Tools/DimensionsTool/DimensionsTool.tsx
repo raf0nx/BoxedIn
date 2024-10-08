@@ -1,3 +1,5 @@
+import { Children } from 'react'
+
 import './DimensionsTool.css'
 
 interface DimensionToolProps {
@@ -22,13 +24,16 @@ export function DimensionsTool({
         </button>
       )}
       <h4 className="dimensions-tool__title">{title}</h4>
-      <div
-        className={`dimensions-tool__data${
-          isCargo ? ' dimensions-tool__data--cargo' : ''
-        }`}
-      >
-        {children}
-      </div>
+      {Children.toArray(children).map((child, idx) => (
+        <div
+          key={idx}
+          className={`dimensions-tool__data${
+            isCargo ? ' dimensions-tool__data--cargo' : ''
+          }`}
+        >
+          {child}
+        </div>
+      ))}
     </div>
   )
 }
