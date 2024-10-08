@@ -1,22 +1,23 @@
-.loading-space-tool {
+.dimensions-tool {
   border: 1px solid var(--input-border-color);
   border-radius: 8px;
   padding: 1rem;
 }
 
-.loading-space-tool__title {
+.dimensions-tool__title {
   margin: 0;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
-.loading-space-tool__data {
+.dimensions-tool__data {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 @media (prefers-color-scheme: light) {
-  .loading-space-tool {
+  .dimensions-tool {
     border-color: var(--input-border-color-light);
   }
 }
