@@ -9,6 +9,12 @@
   margin-bottom: 1rem;
 }
 
+.loading-space-tool__data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media (prefers-color-scheme: light) {
   .loading-space-tool {
     border-color: var(--input-border-color-light);
