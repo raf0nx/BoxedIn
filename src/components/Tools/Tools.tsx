@@ -28,6 +28,11 @@ export function Tools() {
           <ToolsInput label="Height" />
           <ToolsInput label="Width" />
         </DimensionsTool>
+        <DimensionsTool title="CARGO" isCargo>
+          <ToolsInput label="Length" isCargo />
+          <ToolsInput label="Height" isCargo />
+          <ToolsInput label="Width" isCargo />
+        </DimensionsTool>
       </div>
       <button className="tools__action" onClick={sendPrompt}>
         Get boxed!

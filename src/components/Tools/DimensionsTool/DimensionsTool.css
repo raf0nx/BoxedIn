@@ -2,6 +2,17 @@
   border: 1px solid var(--input-border-color);
   border-radius: 8px;
   padding: 1rem;
+  position: relative;
+}
+
+.dimensions-tool__add-cargo-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  border-radius: 100%;
+  padding: 0.5rem 0.75rem;
+  width: 2.25rem;
+  font-weight: 700;
 }
 
 .dimensions-tool__title {
@@ -14,6 +25,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.dimensions-tool__data--cargo {
+  border-top: 1px solid var(--input-border-color);
+  padding-top: 1rem;
 }
 
 @media (prefers-color-scheme: light) {
