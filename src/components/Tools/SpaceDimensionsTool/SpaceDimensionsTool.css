@@ -1,0 +1,23 @@
+.space-dimensions-tool {
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.space-dimensions-tool__title {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.space-dimensions-tool__data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: light) {
+  .space-dimensions-tool {
+    border-color: var(--input-border-color-light);
+  }
+}

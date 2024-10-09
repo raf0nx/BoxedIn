@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { getCargoDistribution } from '../../helpers/ai-helpers'
 
-import { DimensionsTool } from './DimensionsTool'
-import { ToolsInput } from './ToolsInput'
+import { SpaceDimensionsTool } from './SpaceDimensionsTool'
+import { CargoDimensionsTool } from './CargoDimensionsTool'
 
 import './Tools.css'
 
@@ -23,25 +23,8 @@ export function Tools() {
   return (
     <aside className="tools">
       <div className="tools__content">
-        <DimensionsTool title="LOADING SPACE DIMENSIONS">
-          <>
-            <ToolsInput label="Length" />
-            <ToolsInput label="Height" />
-            <ToolsInput label="Width" />
-          </>
-        </DimensionsTool>
-        <DimensionsTool title="CARGO" isCargo>
-          <>
-            <ToolsInput label="Length" isCargo />
-            <ToolsInput label="Height" isCargo />
-            <ToolsInput label="Width" isCargo />
-          </>
-          <>
-            <ToolsInput label="Length" isCargo />
-            <ToolsInput label="Height" isCargo />
-            <ToolsInput label="Width" isCargo />
-          </>
-        </DimensionsTool>
+        <SpaceDimensionsTool />
+        <CargoDimensionsTool />
       </div>
       <button className="tools__action" onClick={sendPrompt}>
         Get boxed!

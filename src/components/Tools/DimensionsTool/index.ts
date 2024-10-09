@@ -1,1 +1,0 @@
-export { DimensionsTool } from './DimensionsTool'

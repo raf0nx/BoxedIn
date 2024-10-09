@@ -1,11 +1,17 @@
-.dimensions-tool {
+.cargo-dimensions-tool {
   border: 1px solid var(--input-border-color);
   border-radius: 8px;
   padding: 1rem;
   position: relative;
 }
 
-.dimensions-tool__add-cargo-btn {
+.cargo-dimensions-tool__title {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.cargo-dimensions-tool__add-cargo {
   position: absolute;
   top: 0.75rem;
   right: 1rem;
@@ -15,26 +21,17 @@
   font-weight: 700;
 }
 
-.dimensions-tool__title {
-  margin: 0;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
-.dimensions-tool__data {
+.cargo-dimensions-tool__data {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.dimensions-tool__data--cargo {
   border-top: 1px solid var(--input-border-color);
   padding-top: 1rem;
   margin-top: 1rem;
 }
 
 @media (prefers-color-scheme: light) {
-  .dimensions-tool {
+  .cargo-dimensions-tool {
     border-color: var(--input-border-color-light);
   }
 }
