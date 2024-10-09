@@ -21,13 +21,45 @@
   font-weight: 700;
 }
 
-.cargo-dimensions-tool__data {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.cargo-dimensions-tool__cargo {
   border-top: 1px solid var(--input-border-color);
   padding-top: 1rem;
   margin-top: 1rem;
+}
+
+.cargo-dimensions-tool__cargo-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.cargo-dimensions-tool__cargo-color-indicator {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.cargo-dimensions-tool__cargo-name {
+  display: flex;
+  align-items: center;
+}
+
+.cargo-dimensions-tool__cargo-name-label {
+  font-size: 0.875rem;
+}
+
+.cargo-dimensions-tool__cargo-name-input {
+  margin-left: 8px;
+  width: 100px;
+}
+
+.cargo-dimensions-tool__cargo-dimensions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (prefers-color-scheme: light) {
