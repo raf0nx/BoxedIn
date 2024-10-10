@@ -34,14 +34,6 @@
   padding-bottom: 1rem;
 }
 
-.cargo-dimensions-tool__cargo-color-indicator {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: red;
-  border-radius: 50%;
-}
-
 .cargo-dimensions-tool__cargo-name {
   display: flex;
   align-items: center;
