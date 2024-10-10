@@ -38,9 +38,27 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
             </div>
           </div>
           <div className="cargo-dimensions-tool__cargo-dimensions">
-            <ToolsInput label="Length" />
-            <ToolsInput label="Height" />
-            <ToolsInput label="Width" />
+            <ToolsInput
+              value={c.dimensions[0]}
+              label="Length"
+              step={0.5}
+              min={0.5}
+              max={5}
+            />
+            <ToolsInput
+              value={c.dimensions[1]}
+              label="Height"
+              step={0.5}
+              min={0.5}
+              max={5}
+            />
+            <ToolsInput
+              value={c.dimensions[2]}
+              label="Width"
+              step={0.5}
+              min={0.5}
+              max={5}
+            />
           </div>
         </div>
       ))}

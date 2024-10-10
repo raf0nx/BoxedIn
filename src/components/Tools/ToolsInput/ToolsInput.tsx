@@ -4,6 +4,7 @@ import './ToolsInput.css'
 
 interface ToolsInputProps {
   label: string
+  value: number
   isCargo?: boolean
   step?: number
   min?: number
@@ -12,6 +13,7 @@ interface ToolsInputProps {
 
 export function ToolsInput({
   label,
+  value,
   isCargo = false,
   step = 0.1,
   min = 1,
@@ -31,7 +33,7 @@ export function ToolsInput({
         step={step}
         min={min}
         max={max}
-        // value={value}
+        value={value}
         // onChange={handleChange}
         // onBlur={handleBlur}
         aria-describedby={`${id}-description`}
