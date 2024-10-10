@@ -5,7 +5,6 @@ import './ToolsInput.css'
 interface ToolsInputProps {
   label: string
   value: number
-  isCargo?: boolean
   step?: number
   min?: number
   max?: number
@@ -14,7 +13,6 @@ interface ToolsInputProps {
 export function ToolsInput({
   label,
   value,
-  isCargo = false,
   step = 0.1,
   min = 1,
   max = 10,
@@ -40,9 +38,7 @@ export function ToolsInput({
       />
       <span className="tools-input__unit">m</span>
       <div id={`${id}-description`} className="tools-input__description">
-        {isCargo
-          ? 'Please enter a value between 0.5 and 5.0 meters, in increments of 0.5.'
-          : 'Please enter a value between 1.0 and 10.0 meters, in increments of 0.1.'}
+        {`Please enter a value between ${min} and ${max} meters, in increments of ${step}.`}
       </div>
     </div>
   )
