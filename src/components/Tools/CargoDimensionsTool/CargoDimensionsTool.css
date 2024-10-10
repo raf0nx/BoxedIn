@@ -58,4 +58,8 @@
   .cargo-dimensions-tool {
     border-color: var(--input-border-color-light);
   }
+
+  .cargo-dimensions-tool__cargo {
+    border-color: var(--input-border-color-light);
+  }
 }
