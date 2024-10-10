@@ -9,7 +9,7 @@
   --input-border-color: rgba(200, 200, 200, 0.87);
   --input-border-color-light: #213547bb;
   --tools-background-color: #444444;
-  --tools-background-color-light: #e0e0e0;
+  --tools-background-color-light: #eeeeee;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -80,6 +80,7 @@ input:focus {
   }
   button {
     background-color: var(--button-background-color-light);
+    border: 1px solid var(--font-color-light);
   }
   input {
     border-color: var(--input-border-color-light);
