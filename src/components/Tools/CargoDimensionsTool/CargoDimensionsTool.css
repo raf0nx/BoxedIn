@@ -1,0 +1,65 @@
+.cargo-dimensions-tool {
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+
+.cargo-dimensions-tool__title {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.cargo-dimensions-tool__add-cargo {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  border-radius: 100%;
+  padding: 0.5rem 0.75rem;
+  width: 2.25rem;
+  font-weight: 700;
+}
+
+.cargo-dimensions-tool__cargo {
+  border-top: 1px solid var(--input-border-color);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.cargo-dimensions-tool__cargo-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.cargo-dimensions-tool__cargo-name {
+  display: flex;
+  align-items: center;
+}
+
+.cargo-dimensions-tool__cargo-name-label {
+  font-size: 0.875rem;
+}
+
+.cargo-dimensions-tool__cargo-name-input {
+  margin-left: 8px;
+  width: 100px;
+}
+
+.cargo-dimensions-tool__cargo-dimensions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: light) {
+  .cargo-dimensions-tool {
+    border-color: var(--input-border-color-light);
+  }
+
+  .cargo-dimensions-tool__cargo {
+    border-color: var(--input-border-color-light);
+  }
+}
