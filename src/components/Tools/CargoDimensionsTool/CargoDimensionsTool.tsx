@@ -6,15 +6,20 @@ import './CargoDimensionsTool.css'
 
 interface CargoDimensionsToolProps {
   cargo: CARGO_ARRAY
+  onAddCargo: () => void
 }
 
-export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
+export function CargoDimensionsTool({
+  cargo,
+  onAddCargo,
+}: CargoDimensionsToolProps) {
   return (
     <div className="cargo-dimensions-tool">
       <h4 className="cargo-dimensions-tool__title">CARGO</h4>
       <button
         className="cargo-dimensions-tool__add-cargo"
         aria-label="Add a Cargo"
+        onClick={onAddCargo}
       >
         +
       </button>
