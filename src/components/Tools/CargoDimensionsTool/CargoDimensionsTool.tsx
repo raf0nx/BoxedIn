@@ -18,6 +18,9 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
       >
         +
       </button>
+      {!cargo.length && (
+        <p className="cargo-dimensions-tool__empty-cargo">No Cargo added</p>
+      )}
       {cargo.map(c => (
         <div key={c.id} className="cargo-dimensions-tool__cargo">
           <div className="cargo-dimensions-tool__cargo-controls">
