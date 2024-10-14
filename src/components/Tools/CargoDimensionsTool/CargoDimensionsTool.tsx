@@ -6,18 +6,34 @@ import './CargoDimensionsTool.css'
 
 interface CargoDimensionsToolProps {
   cargo: CARGO_ARRAY
+  onAddCargo: () => void
+  onCargoNameUpdate: (id: string, value: string) => void
+  onCargoDimensionsUpdate: (
+    id: string,
+    value: number,
+    dimensionIdx: number
+  ) => void
 }
 
-export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
+export function CargoDimensionsTool({
+  cargo,
+  onAddCargo,
+  onCargoNameUpdate,
+  onCargoDimensionsUpdate,
+}: CargoDimensionsToolProps) {
   return (
     <div className="cargo-dimensions-tool">
       <h4 className="cargo-dimensions-tool__title">CARGO</h4>
       <button
         className="cargo-dimensions-tool__add-cargo"
         aria-label="Add a Cargo"
+        onClick={onAddCargo}
       >
         +
       </button>
+      {!cargo.length && (
+        <p className="cargo-dimensions-tool__empty-cargo">No Cargo added</p>
+      )}
       {cargo.map(c => (
         <div key={c.id} className="cargo-dimensions-tool__cargo">
           <div className="cargo-dimensions-tool__cargo-controls">
@@ -34,6 +50,7 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
                 type="text"
                 className="cargo-dimensions-tool__cargo-name-input"
                 value={c.name}
+                onChange={event => onCargoNameUpdate(c.id, event.target.value)}
               />
             </div>
           </div>
@@ -44,6 +61,7 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
               step={0.5}
               min={0.5}
               max={5}
+              onChange={value => onCargoDimensionsUpdate(c.id, value, 0)}
             />
             <ToolsInput
               value={c.dimensions[1]}
@@ -51,6 +69,7 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
               step={0.5}
               min={0.5}
               max={5}
+              onChange={value => onCargoDimensionsUpdate(c.id, value, 1)}
             />
             <ToolsInput
               value={c.dimensions[2]}
@@ -58,6 +77,7 @@ export function CargoDimensionsTool({ cargo }: CargoDimensionsToolProps) {
               step={0.5}
               min={0.5}
               max={5}
+              onChange={value => onCargoDimensionsUpdate(c.id, value, 2)}
             />
           </div>
         </div>
