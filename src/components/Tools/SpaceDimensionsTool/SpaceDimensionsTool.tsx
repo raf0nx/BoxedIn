@@ -8,9 +8,21 @@ export function SpaceDimensionsTool() {
     <div className="space-dimensions-tool">
       <h4 className="space-dimensions-tool__title">LOADING SPACE DIMENSIONS</h4>
       <div className="space-dimensions-tool__data">
-        <ToolsInput value={TRAILER.dimensions[0]} label="Length" />
-        <ToolsInput value={TRAILER.dimensions[1]} label="Height" />
-        <ToolsInput value={TRAILER.dimensions[2]} label="Width" />
+        <ToolsInput
+          value={TRAILER.dimensions[0]}
+          label="Length"
+          onChange={() => {}}
+        />
+        <ToolsInput
+          value={TRAILER.dimensions[1]}
+          label="Height"
+          onChange={() => {}}
+        />
+        <ToolsInput
+          value={TRAILER.dimensions[2]}
+          label="Width"
+          onChange={() => {}}
+        />
       </div>
     </div>
   )

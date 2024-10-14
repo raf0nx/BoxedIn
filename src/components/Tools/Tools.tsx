@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { getCargoDistribution } from '../../helpers/ai-helpers'
-import type { CARGO } from '../../helpers/types'
+// import { getCargoDistribution } from '../../helpers/ai-helpers'
+import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
 import { CargoDimensionsTool } from './CargoDimensionsTool'
@@ -23,17 +23,48 @@ export function Tools() {
   }, [response])
 
   async function sendPrompt() {
-    const cargoDistribution = await getCargoDistribution()
-    setResponse(cargoDistribution ?? '')
+    // const cargoDistribution = await getCargoDistribution()
+    // setResponse(cargoDistribution ?? '')
+    setResponse('')
   }
 
   function handleAddCargo() {
+    const id = generateCargoId()
+
     setCargo(prevCargo => ({
       ...prevCargo,
-      [generateCargoId()]: {
-        name: generateCargoId(),
+      [id]: {
+        name: id,
         color: generateRandomHexColor(),
         dimensions: [1, 1, 1],
+      },
+    }))
+  }
+
+  function handleCargoNameUpdate(id: string, value: string) {
+    setCargo(prevCargo => ({
+      ...prevCargo,
+      [id]: {
+        ...prevCargo[id],
+        name: value,
+      },
+    }))
+  }
+
+  function handleCargoDimensionsUpdate(
+    id: string,
+    value: number,
+    dimensionIdx: number
+  ) {
+    setCargo(prevCargo => ({
+      ...prevCargo,
+      [id]: {
+        ...prevCargo[id],
+        dimensions: [
+          ...prevCargo[id].dimensions.slice(0, dimensionIdx),
+          value,
+          ...prevCargo[id].dimensions.slice(dimensionIdx + 1),
+        ] as DIMENSIONS_3D,
       },
     }))
   }
@@ -45,6 +76,8 @@ export function Tools() {
         <CargoDimensionsTool
           cargo={transformCargoToArray(cargo)}
           onAddCargo={handleAddCargo}
+          onCargoNameUpdate={handleCargoNameUpdate}
+          onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
         />
       </div>
       <button className="tools__action" onClick={sendPrompt}>
