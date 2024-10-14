@@ -1,27 +1,37 @@
 import { ToolsInput } from '../ToolsInput'
-import { TRAILER } from '../../../helpers/constants'
+import type { DIMENSIONS_3D } from '../../../helpers/types'
 
 import './SpaceDimensionsTool.css'
 
-export function SpaceDimensionsTool() {
+interface SpaceDimensionsToolProps {
+  dimensions: DIMENSIONS_3D
+  onLoadingSpaceDimensionsUpdate: (dimensionIdx: number, value: number) => void
+}
+
+export function SpaceDimensionsTool({
+  dimensions,
+  onLoadingSpaceDimensionsUpdate,
+}: SpaceDimensionsToolProps) {
+  const [length, height, width] = dimensions
+
   return (
     <div className="space-dimensions-tool">
       <h4 className="space-dimensions-tool__title">LOADING SPACE DIMENSIONS</h4>
       <div className="space-dimensions-tool__data">
         <ToolsInput
-          value={TRAILER.dimensions[0]}
+          value={length}
           label="Length"
-          onChange={() => {}}
+          onChange={value => onLoadingSpaceDimensionsUpdate(0, value)}
         />
         <ToolsInput
-          value={TRAILER.dimensions[1]}
+          value={height}
           label="Height"
-          onChange={() => {}}
+          onChange={value => onLoadingSpaceDimensionsUpdate(1, value)}
         />
         <ToolsInput
-          value={TRAILER.dimensions[2]}
+          value={width}
           label="Width"
-          onChange={() => {}}
+          onChange={value => onLoadingSpaceDimensionsUpdate(2, value)}
         />
       </div>
     </div>
