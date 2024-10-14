@@ -60,11 +60,9 @@ export function Tools() {
       ...prevCargo,
       [id]: {
         ...prevCargo[id],
-        dimensions: [
-          ...prevCargo[id].dimensions.slice(0, dimensionIdx),
-          value,
-          ...prevCargo[id].dimensions.slice(dimensionIdx + 1),
-        ] as DIMENSIONS_3D,
+        dimensions: prevCargo[id].dimensions.map((el, idx) =>
+          idx === dimensionIdx ? value : el
+        ) as DIMENSIONS_3D,
       },
     }))
   }
