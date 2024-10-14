@@ -27,10 +27,10 @@ export function CargoDimensionsTool({
 
   function handleDimensionsChange(
     id: string,
-    value: string,
+    value: number,
     dimensionIdx: number
   ) {
-    onCargoDimensionsUpdate(id, +value, dimensionIdx)
+    onCargoDimensionsUpdate(id, value, dimensionIdx)
   }
 
   return (

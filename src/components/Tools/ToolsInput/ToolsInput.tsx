@@ -8,7 +8,7 @@ interface ToolsInputProps {
   step?: number
   min?: number
   max?: number
-  onChange: (value: string) => void
+  onChange: (value: number) => void
 }
 
 export function ToolsInput({
@@ -21,7 +21,10 @@ export function ToolsInput({
 }: ToolsInputProps) {
   const id = useId()
 
-  // TODO: VALIDATION WITH ON BLUR
+  function handleBlur() {
+    if (value < min) onChange(min)
+    else if (value > max) onChange(max)
+  }
 
   return (
     <div>
@@ -36,7 +39,8 @@ export function ToolsInput({
         min={min}
         max={max}
         value={value}
-        onChange={event => onChange(event.target.value)}
+        onChange={event => onChange(+event.target.value)}
+        onBlur={handleBlur}
         aria-describedby={`${id}-description`}
       />
       <span className="tools-input__unit">m</span>
