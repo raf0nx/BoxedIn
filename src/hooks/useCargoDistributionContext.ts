@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { CargoDistributionContext } from '../contexts/CargoDistributionContext'
+import { CargoDistributionContext } from '../contexts'
 
 export function useCargoDistributionContext() {
   const context = useContext(CargoDistributionContext)

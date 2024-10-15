@@ -5,7 +5,7 @@ import { TRAILER } from '../helpers/constants'
 import type { CargoDistributionContextProps } from './types'
 
 interface CargoDistributionProviderProps {
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 
 export const CargoDistributionContext =

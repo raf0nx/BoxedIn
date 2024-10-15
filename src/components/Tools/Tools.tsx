@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 // import { getCargoDistribution } from '../../helpers/ai-helpers'
 import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
-import { TRAILER } from '../../helpers/constants'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
 import { CargoDimensionsTool } from './CargoDimensionsTool'
@@ -15,9 +14,6 @@ import {
 import './Tools.css'
 
 export function Tools() {
-  const [loadingSpaceDimensions, setLoadingSpaceDimensions] = useState(
-    TRAILER.dimensions
-  )
   const [cargo, setCargo] = useState<CARGO>({})
   const [response, setResponse] = useState('')
 
@@ -30,18 +26,6 @@ export function Tools() {
     // const cargoDistribution = await getCargoDistribution()
     // setResponse(cargoDistribution ?? '')
     setResponse('')
-  }
-
-  function handleLoadingSpaceDimensionsUpdate(
-    dimensionIdx: number,
-    value: number
-  ) {
-    setLoadingSpaceDimensions(
-      prevLoadingSpaceDimensions =>
-        prevLoadingSpaceDimensions.map((el, idx) =>
-          idx === dimensionIdx ? value : el
-        ) as DIMENSIONS_3D
-    )
   }
 
   function handleAddCargo() {
@@ -86,10 +70,7 @@ export function Tools() {
   return (
     <aside className="tools">
       <div className="tools__content">
-        <SpaceDimensionsTool
-          dimensions={loadingSpaceDimensions}
-          onLoadingSpaceDimensionsUpdate={handleLoadingSpaceDimensionsUpdate}
-        />
+        <SpaceDimensionsTool />
         <CargoDimensionsTool
           cargo={transformCargoToArray(cargo)}
           onAddCargo={handleAddCargo}
