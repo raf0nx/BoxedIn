@@ -3,7 +3,7 @@ import { Box, Edges } from '@react-three/drei'
 import { CARGO_EDGE } from '../../helpers/constants'
 import type { DIMENSIONS_3D } from '../../helpers/types'
 
-import { useAdjustedPosition } from '../../hooks/useAdjustedPosition'
+import { useAdjustedPosition } from '../../hooks'
 
 interface CargoProps {
   dimensions: DIMENSIONS_3D
