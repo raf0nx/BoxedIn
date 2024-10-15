@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
 import * as THREE from 'three'
 
-import type { DIMENSIONS_3D } from '../../helpers/types'
-import { TRAILER } from '../../helpers/constants'
+import type { DIMENSIONS_3D } from '../helpers/types'
+import { TRAILER } from '../helpers/constants'
 
 const TRAILER_WIDTH = TRAILER.dimensions[2]
 
