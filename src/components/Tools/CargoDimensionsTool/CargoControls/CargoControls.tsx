@@ -32,6 +32,11 @@ export function CargoControls({
           }
         />
       </div>
+      <div className="cargo-dimensions-tool__cargo-count">
+        <button className="cargo-dimensions-tool__cargo-count-btn">-</button>
+        <span>1</span>
+        <button className="cargo-dimensions-tool__cargo-count-btn">+</button>
+      </div>
     </div>
   )
 }
