@@ -3,7 +3,7 @@ import * as THREE from 'three'
 
 import type { DIMENSIONS_3D } from '../helpers/types'
 
-import { useCargoDistributionContext } from './useCargoDistributionContext'
+import { useCargoDistributionContext } from '.'
 
 export function useAdjustedPosition(
   initialPosition: DIMENSIONS_3D
