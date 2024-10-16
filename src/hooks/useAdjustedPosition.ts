@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
 import * as THREE from 'three'
 
-import type { DIMENSIONS_3D } from '../../helpers/types'
-import { TRAILER } from '../../helpers/constants'
+import type { DIMENSIONS_3D } from '../helpers/types'
 
-const TRAILER_WIDTH = TRAILER.dimensions[2]
+import { useCargoDistributionContext } from '.'
 
 export function useAdjustedPosition(
   initialPosition: DIMENSIONS_3D
 ): [DIMENSIONS_3D, RefObject<THREE.Mesh>] {
   const elementRef = useRef<THREE.Mesh>(null)
   const [adjustedPosition, setAdjustedPosition] = useState(initialPosition)
+  const {
+    loadingSpaceDimensions: [, , trailerWidth],
+  } = useCargoDistributionContext()
 
   useEffect(() => {
     if (!elementRef.current) return
@@ -23,13 +25,14 @@ export function useAdjustedPosition(
     const halfLength = size.x / 2
     const halfHeight = size.y / 2
     const halfWidth = size.z / 2
-    const adjustedZPosition = TRAILER_WIDTH / 2 - halfWidth
+    const adjustedZPosition = trailerWidth / 2 - halfWidth
 
     setAdjustedPosition(initialPosition => {
       const [x, y, z] = initialPosition
 
       return [halfLength + x, halfHeight + y, adjustedZPosition - z]
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return [adjustedPosition, elementRef]

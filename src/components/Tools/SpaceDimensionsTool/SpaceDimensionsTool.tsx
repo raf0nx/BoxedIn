@@ -1,18 +1,26 @@
 import { ToolsInput } from '../ToolsInput'
+import { useCargoDistributionContext } from '../../../hooks'
 import type { DIMENSIONS_3D } from '../../../helpers/types'
 
 import './SpaceDimensionsTool.css'
 
-interface SpaceDimensionsToolProps {
-  dimensions: DIMENSIONS_3D
-  onLoadingSpaceDimensionsUpdate: (dimensionIdx: number, value: number) => void
-}
+export function SpaceDimensionsTool() {
+  const {
+    loadingSpaceDimensions: [length, height, width],
+    setLoadingSpaceDimensions,
+  } = useCargoDistributionContext()
 
-export function SpaceDimensionsTool({
-  dimensions,
-  onLoadingSpaceDimensionsUpdate,
-}: SpaceDimensionsToolProps) {
-  const [length, height, width] = dimensions
+  function handleLoadingSpaceDimensionsUpdate(
+    dimensionIdx: number,
+    value: number
+  ) {
+    setLoadingSpaceDimensions(
+      prevLoadingSpaceDimensions =>
+        prevLoadingSpaceDimensions.map((el, idx) =>
+          idx === dimensionIdx ? value : el
+        ) as DIMENSIONS_3D
+    )
+  }
 
   return (
     <div className="space-dimensions-tool">
@@ -21,17 +29,17 @@ export function SpaceDimensionsTool({
         <ToolsInput
           value={length}
           label="Length"
-          onChange={value => onLoadingSpaceDimensionsUpdate(0, value)}
+          onChange={value => handleLoadingSpaceDimensionsUpdate(0, value)}
         />
         <ToolsInput
           value={height}
           label="Height"
-          onChange={value => onLoadingSpaceDimensionsUpdate(1, value)}
+          onChange={value => handleLoadingSpaceDimensionsUpdate(1, value)}
         />
         <ToolsInput
           value={width}
           label="Width"
-          onChange={value => onLoadingSpaceDimensionsUpdate(2, value)}
+          onChange={value => handleLoadingSpaceDimensionsUpdate(2, value)}
         />
       </div>
     </div>

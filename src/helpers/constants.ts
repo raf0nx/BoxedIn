@@ -66,7 +66,6 @@ export const CABIN = {
 } as const
 
 export const TRAILER = {
-  position: [3.6, 1.2, 0] as DIMENSIONS_3D,
   dimensions: [7.2, 2.4, 2.5] as DIMENSIONS_3D,
   edgeColor: COLOR_CONTAINER_EDGE,
 } as const
