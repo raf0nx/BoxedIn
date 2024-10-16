@@ -7,7 +7,7 @@ interface CARGO_DATA {
   dimensions: DIMENSIONS_3D
 }
 
-interface CARGO_DATA_WITH_ID extends CARGO_DATA {
+export interface CARGO_DATA_WITH_ID extends CARGO_DATA {
   id: string
 }
 

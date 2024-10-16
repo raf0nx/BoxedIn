@@ -1,6 +1,7 @@
 import { ToolsInput } from '../ToolsInput'
-import { ColorIndicator } from '../../ColorIndicator'
 import type { CARGO_ARRAY } from '../../../helpers/types'
+
+import { CargoControls } from './CargoControls'
 
 import './CargoDimensionsTool.css'
 
@@ -36,24 +37,7 @@ export function CargoDimensionsTool({
       )}
       {cargo.map(c => (
         <div key={c.id} className="cargo-dimensions-tool__cargo">
-          <div className="cargo-dimensions-tool__cargo-controls">
-            <ColorIndicator color={c.color} />
-            <div className="cargo-dimensions-tool__cargo-name">
-              <label
-                htmlFor={c.id}
-                className="cargo-dimensions-tool__cargo-name-label"
-              >
-                Name:
-              </label>
-              <input
-                id={c.id}
-                type="text"
-                className="cargo-dimensions-tool__cargo-name-input"
-                value={c.name}
-                onChange={event => onCargoNameUpdate(c.id, event.target.value)}
-              />
-            </div>
-          </div>
+          <CargoControls cargoItem={c} onCargoNameUpdate={onCargoNameUpdate} />
           <div className="cargo-dimensions-tool__cargo-dimensions">
             <ToolsInput
               value={c.dimensions[0]}
