@@ -6,11 +6,13 @@ import './CargoControls.css'
 interface CargoControlsProps {
   cargoItem: CARGO_DATA_WITH_ID
   onCargoNameUpdate: (id: string, value: string) => void
+  onCargoCountUpdate: (id: string, value: number) => void
 }
 
 export function CargoControls({
   cargoItem,
   onCargoNameUpdate,
+  onCargoCountUpdate,
 }: CargoControlsProps) {
   return (
     <div className="cargo-dimensions-tool__cargo-controls">
@@ -33,9 +35,23 @@ export function CargoControls({
         />
       </div>
       <div className="cargo-dimensions-tool__cargo-count">
-        <button className="cargo-dimensions-tool__cargo-count-btn">-</button>
-        <span>1</span>
-        <button className="cargo-dimensions-tool__cargo-count-btn">+</button>
+        <button
+          className="cargo-dimensions-tool__cargo-count-btn"
+          aria-label={`Decrease "${cargoItem.name}" cargo count by 1`}
+          onClick={() => onCargoCountUpdate(cargoItem.id, cargoItem.count - 1)}
+        >
+          -
+        </button>
+        <span className="cargo-dimensions-tool__cargo-count-value">
+          {cargoItem.count}
+        </span>
+        <button
+          className="cargo-dimensions-tool__cargo-count-btn"
+          aria-label={`Increase "${cargoItem.name}" cargo count by 1`}
+          onClick={() => onCargoCountUpdate(cargoItem.id, cargoItem.count + 1)}
+        >
+          +
+        </button>
       </div>
     </div>
   )

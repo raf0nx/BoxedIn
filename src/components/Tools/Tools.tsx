@@ -37,6 +37,7 @@ export function Tools() {
         name: id,
         color: generateRandomHexColor(),
         dimensions: [1, 1, 1],
+        count: 1,
       },
     }))
   }
@@ -67,6 +68,16 @@ export function Tools() {
     }))
   }
 
+  function handleCargoCountUpdate(id: string, value: number) {
+    setCargo(prevCargo => ({
+      ...prevCargo,
+      [id]: {
+        ...prevCargo[id],
+        count: value,
+      },
+    }))
+  }
+
   return (
     <aside className="tools">
       <div className="tools__content">
@@ -76,6 +87,7 @@ export function Tools() {
           onAddCargo={handleAddCargo}
           onCargoNameUpdate={handleCargoNameUpdate}
           onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
+          onCargoCountUpdate={handleCargoCountUpdate}
         />
       </div>
       <button className="tools__action" onClick={sendPrompt}>

@@ -14,6 +14,7 @@ interface CargoDimensionsToolProps {
     value: number,
     dimensionIdx: number
   ) => void
+  onCargoCountUpdate: (id: string, value: number) => void
 }
 
 export function CargoDimensionsTool({
@@ -21,6 +22,7 @@ export function CargoDimensionsTool({
   onAddCargo,
   onCargoNameUpdate,
   onCargoDimensionsUpdate,
+  onCargoCountUpdate,
 }: CargoDimensionsToolProps) {
   return (
     <div className="cargo-dimensions-tool">
@@ -37,7 +39,11 @@ export function CargoDimensionsTool({
       )}
       {cargo.map(c => (
         <div key={c.id} className="cargo-dimensions-tool__cargo">
-          <CargoControls cargoItem={c} onCargoNameUpdate={onCargoNameUpdate} />
+          <CargoControls
+            cargoItem={c}
+            onCargoNameUpdate={onCargoNameUpdate}
+            onCargoCountUpdate={onCargoCountUpdate}
+          />
           <div className="cargo-dimensions-tool__cargo-dimensions">
             <ToolsInput
               value={c.dimensions[0]}

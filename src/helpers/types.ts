@@ -5,6 +5,7 @@ interface CARGO_DATA {
   name: string
   color: string
   dimensions: DIMENSIONS_3D
+  count: number
 }
 
 export interface CARGO_DATA_WITH_ID extends CARGO_DATA {
