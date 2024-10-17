@@ -34,6 +34,11 @@ export const CARGO_EDGE = {
   color: COLOR_CARGO_EDGE,
 } as const
 
+export const CARGO_COUNT = {
+  min: 1,
+  max: 99,
+} as const
+
 // CARGO CONTAINER
 
 const CABIN_VERTICES = {
