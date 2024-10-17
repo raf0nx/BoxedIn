@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // import { getCargoDistribution } from '../../helpers/ai-helpers'
+import { CARGO_COUNT } from '../../helpers/constants'
 import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
@@ -69,6 +70,8 @@ export function Tools() {
   }
 
   function handleCargoCountUpdate(id: string, value: number) {
+    if (value < CARGO_COUNT.min || value > CARGO_COUNT.max) return
+
     setCargo(prevCargo => ({
       ...prevCargo,
       [id]: {

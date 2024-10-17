@@ -31,8 +31,23 @@
   width: 1.75rem;
   height: 1.75rem;
   line-height: 0.9375rem;
-  background-color: var(--tools-background-color);
+  background-color: transparent;
   border-color: var(--font-color);
+}
+
+.cargo-dimensions-tool__cargo-count-btn:disabled {
+  color: var(--font-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cargo-dimensions-tool__cargo-count-btn:disabled:hover {
+  border-color: var(--font-color);
+}
+
+.cargo-dimensions-tool__cargo-count-btn:disabled:focus,
+.cargo-dimensions-tool__cargo-count-btn:disabled:focus-visible {
+  outline: none;
 }
 
 .cargo-dimensions-tool__cargo-count-value {
@@ -42,7 +57,14 @@
 
 @media (prefers-color-scheme: light) {
   .cargo-dimensions-tool__cargo-count-btn {
-    background-color: var(--tools-background-color-light);
+    border-color: var(--font-color-light);
+  }
+
+  .cargo-dimensions-tool__cargo-count-btn:disabled {
+    color: var(--font-color-light);
+  }
+
+  .cargo-dimensions-tool__cargo-count-btn:disabled:hover {
     border-color: var(--font-color-light);
   }
 }
