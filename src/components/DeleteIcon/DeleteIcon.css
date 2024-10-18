@@ -1,0 +1,31 @@
+.delete-icon {
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background-color: transparent;
+  transition: background-color 0.25s;
+}
+
+.delete-icon:hover,
+.delete-icon:focus,
+.delete-icon:focus-visible {
+  background-color: var(--button-background-color);
+}
+
+.delete-icon svg {
+  fill: var(--font-color);
+}
+
+@media (prefers-color-scheme: light) {
+  .delete-icon:hover,
+  .delete-icon:focus,
+  .delete-icon:focus-visible {
+    background-color: var(--button-background-color-light);
+  }
+
+  .delete-icon svg {
+    fill: var(--font-color-light);
+  }
+}

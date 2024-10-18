@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // import { getCargoDistribution } from '../../helpers/ai-helpers'
+import { CARGO_COUNT } from '../../helpers/constants'
 import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
@@ -37,6 +38,7 @@ export function Tools() {
         name: id,
         color: generateRandomHexColor(),
         dimensions: [1, 1, 1],
+        count: 1,
       },
     }))
   }
@@ -67,6 +69,26 @@ export function Tools() {
     }))
   }
 
+  function handleCargoCountUpdate(id: string, value: number) {
+    if (value < CARGO_COUNT.min || value > CARGO_COUNT.max) return
+
+    setCargo(prevCargo => ({
+      ...prevCargo,
+      [id]: {
+        ...prevCargo[id],
+        count: value,
+      },
+    }))
+  }
+
+  function handleCargoDelete(id: string) {
+    setCargo(prevCargo =>
+      Object.fromEntries(
+        Object.entries(prevCargo).filter(([key]) => key !== id)
+      )
+    )
+  }
+
   return (
     <aside className="tools">
       <div className="tools__content">
@@ -76,6 +98,8 @@ export function Tools() {
           onAddCargo={handleAddCargo}
           onCargoNameUpdate={handleCargoNameUpdate}
           onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
+          onCargoCountUpdate={handleCargoCountUpdate}
+          onCargoDelete={handleCargoDelete}
         />
       </div>
       <button className="tools__action" onClick={sendPrompt}>
