@@ -81,6 +81,14 @@ export function Tools() {
     }))
   }
 
+  function handleCargoDelete(id: string) {
+    setCargo(prevCargo =>
+      Object.fromEntries(
+        Object.entries(prevCargo).filter(([key]) => key !== id)
+      )
+    )
+  }
+
   return (
     <aside className="tools">
       <div className="tools__content">
@@ -91,6 +99,7 @@ export function Tools() {
           onCargoNameUpdate={handleCargoNameUpdate}
           onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
           onCargoCountUpdate={handleCargoCountUpdate}
+          onCargoDelete={handleCargoDelete}
         />
       </div>
       <button className="tools__action" onClick={sendPrompt}>

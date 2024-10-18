@@ -55,6 +55,12 @@
   text-align: center;
 }
 
+.cargo-dimensions-tool__delete-btn {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (prefers-color-scheme: light) {
   .cargo-dimensions-tool__cargo-count-btn {
     border-color: var(--font-color-light);

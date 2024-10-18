@@ -1,4 +1,5 @@
 import { ColorIndicator } from '../../../ColorIndicator'
+import { DeleteIcon } from '../../../DeleteIcon'
 import { CARGO_COUNT } from '../../../../helpers/constants'
 import type { CARGO_DATA_WITH_ID } from '../../../../helpers/types'
 
@@ -8,12 +9,14 @@ interface CargoControlsProps {
   cargoItem: CARGO_DATA_WITH_ID
   onCargoNameUpdate: (id: string, value: string) => void
   onCargoCountUpdate: (id: string, value: number) => void
+  onCargoDelete: (id: string) => void
 }
 
 export function CargoControls({
   cargoItem,
   onCargoNameUpdate,
   onCargoCountUpdate,
+  onCargoDelete,
 }: CargoControlsProps) {
   const { id, name, color, count } = cargoItem
   const isDecreaseCargoDisabled = count === CARGO_COUNT.min
@@ -54,6 +57,9 @@ export function CargoControls({
         >
           +
         </button>
+      </div>
+      <div className="cargo-dimensions-tool__delete-btn">
+        <DeleteIcon onClick={() => onCargoDelete(id)} itemToDeleteName={name} />
       </div>
     </div>
   )
