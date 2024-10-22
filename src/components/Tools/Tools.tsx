@@ -1,9 +1,16 @@
 import { useState } from 'react'
 
-import { getCargoDistribution } from '../../helpers/ai-helpers'
-import { CARGO_COUNT } from '../../helpers/constants'
-import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
+import {
+  getCargoDistribution,
+  extractCargoDistributionFromAIResponse,
+} from '../../helpers/ai-helpers'
 import { useCargoDistributionContext } from '../../hooks'
+import { CARGO_COUNT } from '../../helpers/constants'
+import type {
+  AI_DISTRIBUTED_CARGO,
+  CARGO,
+  DIMENSIONS_3D,
+} from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
 import { CargoDimensionsTool } from './CargoDimensionsTool'
@@ -18,14 +25,26 @@ import './Tools.css'
 
 export function Tools() {
   const [cargo, setCargo] = useState<CARGO>({})
-  const { loadingSpaceDimensions } = useCargoDistributionContext()
+  const { loadingSpaceDimensions, setCargoDistribution } =
+    useCargoDistributionContext()
 
   async function sendPrompt() {
-    const cargoDistribution = await getCargoDistribution(
+    const response = await getCargoDistribution(
       transformCargoForPrompt(cargo),
       loadingSpaceDimensions
     )
-    console.log(cargoDistribution)
+
+    // TODO: error handling
+    if (!response) return
+
+    const cargoDistribution = extractCargoDistributionFromAIResponse(response)
+
+    if (cargoDistribution.errorMessage) {
+      // TODO: error handling
+      return
+    } else {
+      setCargoDistribution(cargoDistribution as AI_DISTRIBUTED_CARGO)
+    }
   }
 
   function handleAddCargo() {

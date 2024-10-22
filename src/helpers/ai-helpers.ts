@@ -1,6 +1,10 @@
 import OpenAI from 'openai'
 
-import type { DIMENSIONS_3D, PROMPT_TRANSFORMED_CARGO } from './types'
+import type {
+  AI_DISTRIBUTED_CARGO,
+  DIMENSIONS_3D,
+  PROMPT_TRANSFORMED_CARGO,
+} from './types'
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -41,7 +45,7 @@ export async function getCargoDistribution(
   loadingSpaceDimensions: DIMENSIONS_3D
 ) {
   const openAiCompletion = await openai.chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: 'gpt-4o',
     messages: [
       {
         role: 'system',
@@ -56,3 +60,23 @@ export async function getCargoDistribution(
 
   return openAiCompletion.choices[0].message.content
 }
+
+export function extractCargoDistributionFromAIResponse(
+  response: string
+): AI_DISTRIBUTED_CARGO | { errorMessage: string } {
+  const jsonRegex = /```json([\s\S]*?)```/
+  const match = response.match(jsonRegex)
+
+  if (match && match[1]) {
+    const jsonString = match[1].trim()
+
+    try {
+      return JSON.parse(jsonString)
+    } catch (error) {
+      return { errorMessage: `Failed to parse cargo JSON. ${error}` }
+    }
+  } else {
+    return { errorMessage: 'No cargo data found' }
+  }
+}
+

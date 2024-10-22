@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react'
 
 import { TRAILER } from '../helpers/constants'
+import type { AI_DISTRIBUTED_CARGO } from '../helpers/types'
 
 import type { CargoDistributionContextProps } from './types'
 
@@ -17,10 +18,14 @@ export function CargoDistributionProvider({
   const [loadingSpaceDimensions, setLoadingSpaceDimensions] = useState(
     TRAILER.dimensions
   )
+  const [cargoDistribution, setCargoDistribution] =
+    useState<AI_DISTRIBUTED_CARGO>({})
 
   const value: CargoDistributionContextProps = {
     loadingSpaceDimensions,
+    cargoDistribution,
     setLoadingSpaceDimensions,
+    setCargoDistribution,
   }
 
   return (
