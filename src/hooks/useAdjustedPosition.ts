@@ -27,13 +27,13 @@ export function useAdjustedPosition(
     const halfWidth = size.z / 2
     const adjustedZPosition = trailerWidth / 2 - halfWidth
 
-    setAdjustedPosition(initialPosition => {
+    setAdjustedPosition(() => {
       const [x, y, z] = initialPosition
 
       return [halfLength + x, halfHeight + y, adjustedZPosition - z]
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [initialPosition])
 
   return [adjustedPosition, elementRef]
 }

@@ -17,3 +17,8 @@ export interface CARGO {
 }
 
 export type CARGO_ARRAY = CARGO_DATA_WITH_ID[]
+export type PROMPT_TRANSFORMED_CARGO = Record<string, Omit<CARGO_DATA, 'count'>>
+export type AI_DISTRIBUTED_CARGO = Record<
+  string,
+  Omit<CARGO_DATA, 'count'> & { position: DIMENSIONS_3D }
+>

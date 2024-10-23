@@ -5,10 +5,13 @@ import { Base } from '../Base'
 import { Cargo } from '../Cargo'
 import { CargoContainer } from '../CargoContainer'
 import { CAMERA, LIGHT } from '../../helpers/constants'
+import { useCargoDistributionContext } from '../../hooks'
 
 import './Canvas.css'
 
 export function Canvas() {
+  const { cargoDistribution } = useCargoDistributionContext()
+
   return (
     <section className="canvas">
       <R3Canvas camera={CAMERA.initialPosition}>
@@ -19,7 +22,14 @@ export function Canvas() {
         />
         <Base />
         <CargoContainer />
-        <Cargo dimensions={[1, 1, 1]} position={[0, 0, 0]} color="orange" />
+        {Object.entries(cargoDistribution).map(([cargoID, cargo]) => (
+          <Cargo
+            key={cargoID}
+            dimensions={cargo.dimensions}
+            position={cargo.position}
+            color={cargo.color}
+          />
+        ))}
         <OrbitControls
           minDistance={CAMERA.minDistance}
           maxDistance={CAMERA.maxDistance}
