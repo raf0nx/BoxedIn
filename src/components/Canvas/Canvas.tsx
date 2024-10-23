@@ -22,7 +22,6 @@ export function Canvas() {
         />
         <Base />
         <CargoContainer />
-        {/* TODO: when you edit existing cargo its useAdjustedPosition doesnt recalculate leading to weird errors */}
         {Object.entries(cargoDistribution).map(([cargoID, cargo]) => (
           <Cargo
             key={cargoID}

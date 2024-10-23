@@ -79,4 +79,3 @@ export function extractCargoDistributionFromAIResponse(
     return { errorMessage: 'No cargo data found' }
   }
 }
-
