@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { LoadingScreen } from '../LoadingScreen'
 import {
   getCargoDistribution,
   extractCargoDistributionFromAIResponse,
@@ -25,14 +26,19 @@ import './Tools.css'
 
 export function Tools() {
   const [cargo, setCargo] = useState<CARGO>({})
+  const [isCargoLoading, setIsCargoLoading] = useState(false)
   const { loadingSpaceDimensions, setCargoDistribution } =
     useCargoDistributionContext()
 
   async function sendPrompt() {
+    setIsCargoLoading(true)
+
     const response = await getCargoDistribution(
       transformCargoForPrompt(cargo),
       loadingSpaceDimensions
     )
+
+    setIsCargoLoading(false)
 
     // TODO: error handling
     if (!response) return
@@ -123,6 +129,7 @@ export function Tools() {
       <button className="tools__action" onClick={sendPrompt}>
         Get boxed!
       </button>
+      <LoadingScreen show={isCargoLoading} />
     </aside>
   )
 }

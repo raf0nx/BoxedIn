@@ -10,6 +10,7 @@
   --input-border-color-light: #213547bb;
   --tools-background-color: #444444;
   --tools-background-color-light: #eeeeee;
+  --loading-screen-background: rgba(46, 46, 46, 0.5);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
