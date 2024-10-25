@@ -62,8 +62,12 @@ export async function getCargoDistribution(
 }
 
 export function extractCargoDistributionFromAIResponse(
-  response: string
-): AI_DISTRIBUTED_CARGO | { errorMessage: string } {
+  response: string | null
+): AI_DISTRIBUTED_CARGO {
+  if (response === null) {
+    throw new Error('Failed to fetch distributed cargo. Please try again.')
+  }
+
   const jsonRegex = /```json([\s\S]*?)```/
   const match = response.match(jsonRegex)
 
@@ -72,10 +76,10 @@ export function extractCargoDistributionFromAIResponse(
 
     try {
       return JSON.parse(jsonString)
-    } catch (error) {
-      return { errorMessage: `Failed to parse cargo JSON. ${error}` }
+    } catch {
+      throw new Error('Failed to parse cargo data.')
     }
   } else {
-    return { errorMessage: 'No cargo data found' }
+    throw new Error('No cargo data found.')
   }
 }
