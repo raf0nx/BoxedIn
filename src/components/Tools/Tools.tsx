@@ -1,17 +1,14 @@
 import { useState } from 'react'
 
 import { LoadingScreen } from '../LoadingScreen'
+import { ErrorToast } from '../ErrorToast'
 import {
   getCargoDistribution,
   extractCargoDistributionFromAIResponse,
 } from '../../helpers/ai-helpers'
 import { useCargoDistributionContext } from '../../hooks'
 import { CARGO_COUNT } from '../../helpers/constants'
-import type {
-  AI_DISTRIBUTED_CARGO,
-  CARGO,
-  DIMENSIONS_3D,
-} from '../../helpers/types'
+import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
 import { CargoDimensionsTool } from './CargoDimensionsTool'
@@ -27,30 +24,35 @@ import './Tools.css'
 export function Tools() {
   const [cargo, setCargo] = useState<CARGO>({})
   const [isCargoLoading, setIsCargoLoading] = useState(false)
+  const [showError, setShowError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const { loadingSpaceDimensions, setCargoDistribution } =
     useCargoDistributionContext()
 
-  async function sendPrompt() {
+  async function getOptimizedCargoDistribution() {
     setIsCargoLoading(true)
 
-    const response = await getCargoDistribution(
-      transformCargoForPrompt(cargo),
-      loadingSpaceDimensions
-    )
+    try {
+      const cargoDistribution = extractCargoDistributionFromAIResponse(
+        await getCargoDistribution(
+          transformCargoForPrompt(cargo),
+          loadingSpaceDimensions
+        )
+      )
+
+      if (cargoDistribution.errorMessage)
+        throw new Error(cargoDistribution.errorMessage as unknown as string)
+
+      setCargoDistribution(cargoDistribution)
+    } catch (error) {
+      if (error instanceof Error) {
+        handleError(error.message)
+      } else {
+        handleError('An unknown error occurred. Please try again.')
+      }
+    }
 
     setIsCargoLoading(false)
-
-    // TODO: error handling
-    if (!response) return
-
-    const cargoDistribution = extractCargoDistributionFromAIResponse(response)
-
-    if (cargoDistribution.errorMessage) {
-      // TODO: error handling
-      return
-    } else {
-      setCargoDistribution(cargoDistribution as AI_DISTRIBUTED_CARGO)
-    }
   }
 
   function handleAddCargo() {
@@ -113,6 +115,11 @@ export function Tools() {
     )
   }
 
+  function handleError(message: string) {
+    setShowError(true)
+    setErrorMessage(message)
+  }
+
   return (
     <aside className="tools">
       <div className="tools__content">
@@ -126,10 +133,15 @@ export function Tools() {
           onCargoDelete={handleCargoDelete}
         />
       </div>
-      <button className="tools__action" onClick={sendPrompt}>
+      <button className="tools__action" onClick={getOptimizedCargoDistribution}>
         Get boxed!
       </button>
       <LoadingScreen show={isCargoLoading} />
+      <ErrorToast
+        show={showError}
+        message={errorMessage}
+        onClose={() => setShowError(false)}
+      />
     </aside>
   )
 }
