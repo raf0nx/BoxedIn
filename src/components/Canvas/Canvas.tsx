@@ -25,9 +25,11 @@ export function Canvas() {
         {Object.entries(cargoDistribution).map(([cargoID, cargo]) => (
           <Cargo
             key={cargoID}
+            id={cargoID}
             dimensions={cargo.dimensions}
             position={cargo.position}
             color={cargo.color}
+            label={cargo.name}
           />
         ))}
         <OrbitControls

@@ -34,6 +34,13 @@ export const CARGO_EDGE = {
   color: COLOR_CARGO_EDGE,
 } as const
 
+export const CARGO_LABEL = {
+  fontSize: 0.2,
+  textAlign: 'center',
+  overflowWrap: 'break-word',
+  outlineWidth: 0.002,
+} as const
+
 export const CARGO_COUNT = {
   min: 1,
   max: 99,
