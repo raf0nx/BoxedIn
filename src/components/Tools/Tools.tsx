@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 
 import { LoadingScreen } from '../LoadingScreen'
 import { ErrorToast } from '../ErrorToast'
@@ -122,17 +123,19 @@ export function Tools() {
 
   return (
     <aside className="tools">
-      <div className="tools__content">
-        <SpaceDimensionsTool />
-        <CargoDimensionsTool
-          cargo={transformCargoToArray(cargo)}
-          onAddCargo={handleAddCargo}
-          onCargoNameUpdate={handleCargoNameUpdate}
-          onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
-          onCargoCountUpdate={handleCargoCountUpdate}
-          onCargoDelete={handleCargoDelete}
-        />
-      </div>
+      <OverlayScrollbarsComponent defer>
+        <div className="tools__content">
+          <SpaceDimensionsTool />
+          <CargoDimensionsTool
+            cargo={transformCargoToArray(cargo)}
+            onAddCargo={handleAddCargo}
+            onCargoNameUpdate={handleCargoNameUpdate}
+            onCargoDimensionsUpdate={handleCargoDimensionsUpdate}
+            onCargoCountUpdate={handleCargoCountUpdate}
+            onCargoDelete={handleCargoDelete}
+          />
+        </div>
+      </OverlayScrollbarsComponent>
       <button className="tools__action" onClick={getOptimizedCargoDistribution}>
         Get boxed!
       </button>
