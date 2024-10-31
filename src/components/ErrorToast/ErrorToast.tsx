@@ -32,8 +32,8 @@ export function ErrorToast({ show, message, onClose }: ErrorToastProps) {
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 50 50"
             xmlSpace="preserve"
-            width="24"
-            height="24"
+            width="1.5rem"
+            height="1.5rem"
           >
             <circle style={{ fill: '#D75A4A' }} cx="25" cy="25" r="25" />
             <polyline
