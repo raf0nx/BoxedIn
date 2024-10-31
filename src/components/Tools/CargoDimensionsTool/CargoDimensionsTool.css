@@ -17,7 +17,7 @@
   right: 1rem;
   border-radius: 100%;
   padding: 0.5rem 0.75rem;
-  width: 2.25rem;
+  width: 36px;
   font-weight: 700;
 }
 
@@ -47,5 +47,11 @@
 
   .cargo-dimensions-tool__cargo {
     border-color: var(--input-border-color-light);
+  }
+}
+
+@media (max-width: 480px) {
+  .cargo-dimensions-tool__add-cargo {
+    width: 29px;
   }
 }
