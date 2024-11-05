@@ -32,4 +32,8 @@
     position: absolute;
     z-index: 1;
   }
+
+  .tools--hidden {
+    visibility: hidden;
+  }
 }

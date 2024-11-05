@@ -1,0 +1,40 @@
+.tools-toggle {
+  position: absolute;
+  top: 132px;
+  right: 0;
+  z-index: 1;
+  border-radius: 50% 0 0 50%;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tools-toggle > svg > path {
+  stroke: var(--font-color);
+}
+
+.tools-toggle--translated {
+  left: 0;
+  border-radius: 0 50% 50% 0;
+}
+
+@media (max-width: 480px) {
+  .tools-toggle {
+    top: 100px;
+  }
+}
+
+@media (min-width: 769px) {
+  .tools-toggle {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .tools-toggle > svg > path {
+    stroke: var(--font-color-light);
+  }
+}

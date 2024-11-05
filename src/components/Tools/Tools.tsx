@@ -13,6 +13,7 @@ import type { CARGO, DIMENSIONS_3D } from '../../helpers/types'
 
 import { SpaceDimensionsTool } from './SpaceDimensionsTool'
 import { CargoDimensionsTool } from './CargoDimensionsTool'
+import { ToolsToggle } from './ToolsToggle'
 import {
   generateCargoId,
   generateRandomHexColor,
@@ -27,6 +28,7 @@ export function Tools() {
   const [isCargoLoading, setIsCargoLoading] = useState(false)
   const [showError, setShowError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [areToolsVisible, setAreToolsVisible] = useState(true)
   const { loadingSpaceDimensions, setCargoDistribution } =
     useCargoDistributionContext()
 
@@ -45,6 +47,7 @@ export function Tools() {
         throw new Error(cargoDistribution.errorMessage as unknown as string)
 
       setCargoDistribution(cargoDistribution)
+      setAreToolsVisible(false)
     } catch (error) {
       if (error instanceof Error) {
         handleError(error.message)
@@ -122,7 +125,7 @@ export function Tools() {
   }
 
   return (
-    <aside className="tools">
+    <aside className={`tools${areToolsVisible ? '' : ' tools--hidden'}`}>
       <OverlayScrollbarsComponent defer>
         <div className="tools__content">
           <SpaceDimensionsTool />
@@ -144,6 +147,10 @@ export function Tools() {
         show={showError}
         message={errorMessage}
         onClose={() => setShowError(false)}
+      />
+      <ToolsToggle
+        areToolsVisible={areToolsVisible}
+        onToolsToggle={() => setAreToolsVisible(atv => !atv)}
       />
     </aside>
   )
