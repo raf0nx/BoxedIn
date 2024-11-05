@@ -38,6 +38,7 @@ body {
   width: 100%;
   display: flex;
   place-items: center;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -53,6 +54,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: var(--button-background-color);
+  color: var(--font-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -85,10 +87,17 @@ input:focus {
   }
   button {
     background-color: var(--button-background-color-light);
+    color: var(--font-color-light);
     border: 1px solid var(--font-color-light);
   }
   input {
     border-color: var(--input-border-color-light);
     background-color: var(--tools-background-color-light);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
   }
 }

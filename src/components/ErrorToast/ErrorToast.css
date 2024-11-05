@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 2;
   background-color: var(--error-toast-background-color);
   color: var(--error-toast-font-color);
   padding: 1rem;
@@ -20,7 +20,7 @@
 }
 
 .error-toast__icon {
-  height: 24px;
+  height: 1.5rem;
   margin-right: 0.5rem;
 }
 
@@ -34,7 +34,7 @@
   color: var(--error-toast-font-color);
   font-size: 1.5rem;
   padding: 0.5rem;
-  width: 44px;
+  width: 2.75rem;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -42,4 +42,14 @@
 .error-toast__close-btn:focus,
 .error-toast__close-btn:focus-visible {
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .error-toast {
+    top: 20px;
+    left: 20px;
+    bottom: unset;
+    right: unset;
+    width: calc(100% - 40px);
+  }
 }
