@@ -20,6 +20,20 @@
   margin: 1rem;
 }
 
+.tools__action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tools__action:disabled:hover {
+  border-color: transparent;
+}
+
+.tools__action:disabled:focus,
+.tools__action:disabled:focus-visible {
+  outline: none;
+}
+
 @media (prefers-color-scheme: light) {
   .tools {
     background-color: var(--tools-background-color-light);
