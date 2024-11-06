@@ -32,6 +32,9 @@ export function Tools() {
   const { loadingSpaceDimensions, setCargoDistribution } =
     useCargoDistributionContext()
 
+  const isGetBoxedBtnDisabled =
+    Object.keys(cargo).length === 0 || isCargoLoading
+
   async function getOptimizedCargoDistribution() {
     setIsCargoLoading(true)
 
@@ -139,7 +142,11 @@ export function Tools() {
           />
         </div>
       </OverlayScrollbarsComponent>
-      <button className="tools__action" onClick={getOptimizedCargoDistribution}>
+      <button
+        className="tools__action"
+        onClick={getOptimizedCargoDistribution}
+        disabled={isGetBoxedBtnDisabled}
+      >
         Get boxed!
       </button>
       <LoadingScreen show={isCargoLoading} />
