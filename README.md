@@ -103,4 +103,4 @@ To run **BoxedIn** locally, follow these steps:
 
 ## 🎥 Demo
 
-![App Demo](link)
+![BoxedIn_demo](https://github.com/user-attachments/assets/dc03e26f-6193-4450-96d6-9cd92e1cdc0e)
